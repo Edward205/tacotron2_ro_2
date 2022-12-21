@@ -26,7 +26,7 @@ def create_hparams(hparams_string=None, verbose=False):
         dist_url="tcp://localhost:54321",
         cudnn_enabled=True,
         cudnn_benchmark=False,
-        ignore_layers=['embedding.weight'],
+        ignore_layers=['basic_cleaners'],
 
         ################################
         # Data Parameters             #
@@ -99,4 +99,7 @@ def create_hparams(hparams_string=None, verbose=False):
     if verbose:
         tf.compat.v1.logging.info('Final parsed hparams: %s', hparams.values())
 
+        
+    hparams.text_cleaners=["basic_cleaners"]
+    hparams.ignore_layers=["embedding.weight"]
     return hparams
